@@ -34,6 +34,7 @@ const SumRankings = () => {
     const [season, setSeason] = useState(2023);
     const [ages, setAges] = useState([10, 18]);
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const changeVar = (changer, event) => {
         changer(event.target.value);
@@ -41,13 +42,15 @@ const SumRankings = () => {
 
     const STEM = 'https://www.data-pool.ca/api/sumrankings?';
     const updateResults = async () => {
+        setLoading(true);
         let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}`;
         const res = await fetch(`${url}`);
-        console.log(res)
         const data = await res.json();
-        console.log(data);
         setData(data);
     }
+    useEffect(() => {
+        setLoading(false);
+    }, [data]);
 
     var tableData = []
     for (let i = 0; i < data.length; i++) {
@@ -157,7 +160,7 @@ const SumRankings = () => {
             <br/>
             <br/>
             <br/>
-            {table}
+            {loading? <h3>Loading...</h3> : table}
         </div>
     );
 };
