@@ -3,8 +3,10 @@ import Button from '@mui/material/Button';
 import SmartSelect from "../components/SmartSelect";
 import SearchBar from '../components/searchbar'
 import SmartSlider from "../components/smartslider";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
  
 const ClubReport = () => {
+
     const GENDERS = [
         {value: "M", label: "Men"},
         {value: 'F', label: "Women"},
@@ -48,10 +50,13 @@ const ClubReport = () => {
 
     let header_row = []
     let data_row = []
+    let graph_data = []
     for (var year in data) {
         header_row.push(<th>{year}</th>)
         data_row.push(<td>{data[year].points}</td>)
+        graph_data.push({year: year, points: data[year].points})
     }
+    console.log(graph_data)
     var table = 
         <table> 
             <thead>
@@ -119,6 +124,21 @@ const ClubReport = () => {
             <br/>
             <br/>
             {loading? <h4>Loading...</h4> : table}
+            <br/>
+            {data.length === 0 ? <></> : 
+                <LineChart
+                    width={800}
+                    height={500}
+                    data={graph_data} 
+                    style={{margin: 'auto'}}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="year" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="points" stroke="#02bad6"/>
+                </LineChart>
+            }
+            
         </div>
     );
 };

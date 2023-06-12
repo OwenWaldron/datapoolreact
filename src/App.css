@@ -5,7 +5,7 @@ header {
 
 footer {
   background-color: #a4f4f8;
-  margin-top: 6rem;
+  height: 120px;
   padding: 1rem;
   text-align: left;
 }
@@ -20,7 +20,8 @@ nav {
 .content {
   padding: 0 10rem 0;
   text-align: center;
-  padding-bottom: 0rem;
+  padding-bottom: 3rem;
+  min-height: 29.3rem;
 }
 
 table {

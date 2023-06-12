@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages'
 import SumRankings from './pages/sumrankings';
 import ClubReport from './pages/clubreport';
+import PageFooter from './components/pagefooter';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/sumrankings' element={<SumRankings />} />
         <Route path='/clubreport' element={<ClubReport />} />
       </Routes>
+      <PageFooter/>
     </Router>
   );
 }
