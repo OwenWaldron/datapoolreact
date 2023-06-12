@@ -121,7 +121,8 @@ div.clubs {
   border-color: black;
   border: 0.3rem;
   background-color: white;
-  display: none;
+  width: 20rem;
+  margin: auto;
 }
 
 b.club {

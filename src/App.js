@@ -9,7 +9,7 @@ import ClubReport from './pages/clubreport';
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/sumrankings' element={<SumRankings />} />

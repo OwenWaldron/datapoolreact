@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Slider from '@mui/material/Slider';
-import Select from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl'; 
-import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
-import { MenuItem } from '@mui/material';
+import SmartSelect from "../components/SmartSelect";
+import SmartSlider from "../components/smartslider";
 
 
 
@@ -36,9 +33,6 @@ const SumRankings = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const changeVar = (changer, event) => {
-        changer(event.target.value);
-    }
 
     const STEM = 'https://www.data-pool.ca/api/sumrankings?';
     const updateResults = async () => {
@@ -79,82 +73,48 @@ const SumRankings = () => {
     return (
         <div className='content'>
             <h2>SumRanking</h2>
-            <FormControl>
-                <InputLabel>Gender</InputLabel>
-                <Select value={gender} onChange={(event) => changeVar(setGender, event)} label="Gender">
-                    {GENDERS.map((row) => (
-                        <MenuItem value={row.value} key={row.value}>{row.label}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-            <FormControl>
-                <InputLabel>Course</InputLabel>
-                <Select value={course} onChange={(event) => changeVar(setCourse, event)} label="Gender">
-                    {COURSES.map((row) => (
-                        <MenuItem value={row.value} key={row.value}>{row.label}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-            <FormControl>
-                <InputLabel>Stroke</InputLabel>
-                <Select value={stroke} onChange={(event) => changeVar(setStroke, event)} label="Gender">
-                    {STROKES.map((row) => (
-                        <MenuItem value={row.value} key={row.value}>{row.label}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <SmartSelect
+                label="Gender"
+                changer={setGender} 
+                options={GENDERS} 
+                value={gender} />
+            <SmartSelect
+                label="Course"
+                changer={setCourse} 
+                options={COURSES} 
+                value={course} />
+            <SmartSelect
+                label="Stroke"
+                changer={setStroke} 
+                options={STROKES} 
+                value={stroke} />
             <br/>
-            <FormControl>
-                <InputLabel>Places</InputLabel>
-                <div style={{ width: 300 }}>
-                    <Slider
-                        label='Places'
-                        aria-label="Places"
-                        value={place}
-                        getAriaValueText={(value) => `Top ${value}`}
-                        valueLabelDisplay="auto"
-                        step={1}
-                        min={10}
-                        max={100}
-                        onChange={(event) => changeVar(setPlace, event)}
-                    />
-                </div>
-            </FormControl>
+            <SmartSlider
+                label='Places'
+                value={place}
+                valueLabelDisplay="auto"
+                step={1}
+                range={[10,100]}
+                changer={setPlace} />
             <br/>
-            <FormControl>
-                <InputLabel>Ages</InputLabel>
-                <div style={{ width: 300 }}>
-                    <Slider
-                        label='Places'
-                        value={ages}
-                        getAriaValueText={(value) => `${value[0]}-${value[1]}`}
-                        valueLabelDisplay="auto"
-                        step={1}
-                        min={1}
-                        max={30}
-                        marks
-                        onChange={(event) => changeVar(setAges, event)}
-                        disableSwap
-                    />
-                </div>
-            </FormControl>
+            <SmartSlider
+                label='Ages'
+                value={ages}
+                valueLabelDisplay="auto"
+                step={1}
+                range={[0,30]}
+                marks
+                changer={setAges}
+                disableSwap />
             <br/>
-            <FormControl>
-                <InputLabel>Season</InputLabel>
-                <div style={{ width: 300 }}>
-                    <Slider
-                        label='Season'
-                        aria-label="Season"
-                        value={season}
-                        getAriaValueText={(value) => `${value}`}
-                        valueLabelDisplay="auto"
-                        step={1}
-                        min={2008}
-                        max={2023}
-                        onChange={(event) => changeVar(setSeason, event)}
-                    />
-                </div>
-            </FormControl>
+            <SmartSlider
+                label='Season'
+                value={season}
+                valueLabelDisplay="auto"
+                step={1}
+                range={[2008, 2023]}
+                marks
+                changer={setSeason} />
             <br/>
             <Button variant="contained" onClick={updateResults}>Get Results</Button>
             <br/>

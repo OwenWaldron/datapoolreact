@@ -7,16 +7,16 @@ const Navbar = () => {
         <>
             <header>
                 <h1 style={{padding: '0 10rem 0'}}>
-                    <img src={swimmer} class="icon" alt="logo"/>
+                    <img src={swimmer} className="icon" alt="logo"/>
                     Data<b style={{color: "#a4f4f8"}}>Pool</b>
                 </h1>
-                <nav class="nav" style={{padding: '0 10rem 0'}}>
-                    <a class="nav-link" href="/"><b>Home</b></a>
-                    <a class="nav-link" href="/sumrankings">Sum Rankings</a>
-                    <a class="nav-link" href="/clubreport">Club Reports</a>
+                <nav className="nav" style={{padding: '0 10rem 0'}}>
+                    <a className="nav-link" href="/"><b>Home</b></a>
+                    <a className="nav-link" href="/sumrankings">Sum Rankings</a>
+                    <a className="nav-link" href="/clubreport">Club Reports</a>
                 </nav>  
             </header>
-            <div class="spacer"></div>
+            <div className="spacer"></div>
         </>
      );
 }
