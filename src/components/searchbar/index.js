@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react';
 
 
 const getClubsFromAPI = async (search) => {
-    let url = `http://127.0.0.1:8000/api/clubs?search=${search}`
-    const res = await fetch(`${url}`);
+    let url = `https://www.data-pool.ca/api/clubs?search=${search}`
+    const res = await fetch(url);
     const data = await res.json();
     return data;
 }

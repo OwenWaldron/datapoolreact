@@ -36,7 +36,7 @@ const ClubReport = () => {
 
     const updateResults = async () => {
         setLoading(true);
-        let url = `http://127.0.0.1:8000/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}`;
+        let url = `https://www.data-pool.ca/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}`;
         const res = await fetch(url);
         const data = await res.json();
         setData(data);
