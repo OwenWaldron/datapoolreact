@@ -5,6 +5,8 @@ import SearchBar from '../components/searchbar'
 import SmartSlider from "../components/smartslider";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
  
+
+
 const ClubReport = () => {
 
     const GENDERS = [
@@ -25,9 +27,14 @@ const ClubReport = () => {
         {value: 'BR', label: 'Breaststroke'},
         {value: 'IM', label: 'IM'}
     ];
+    const POINTS = [
+        {value: 'FINA', label: 'FINA'},
+        {value: 'CAGP', label: 'CAGP'}
+    ];
     const [gender, setGender] = useState('M');
     const [course, setCourse] = useState('LCM');
     const [stroke, setStroke] = useState('FR');
+    const [points, setPoints] = useState('FINA');
     const [place, setPlace] = useState(50);
     const [seasons, setSeasons] = useState([2008, 2023]);
     const [ages, setAges] = useState([10, 18]);
@@ -38,7 +45,7 @@ const ClubReport = () => {
 
     const updateResults = async () => {
         setLoading(true);
-        let url = `https://www.data-pool.ca/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}`;
+        let url = `https://www.data-pool.ca/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
         const res = await fetch(url);
         const data = await res.json();
         setData(data);
@@ -51,13 +58,20 @@ const ClubReport = () => {
     let header_row = []
     let data_row = []
     let graph_data = []
+    let swimmer_data = []
     for (var year in data) {
         header_row.push(<th>{year}</th>)
         data_row.push(<td>{data[year].points}</td>)
         graph_data.push({year: year, points: data[year].points})
+        for (var i in data[year].swims) {
+            var params = []
+            for (var param in data[year].swims[i]) {
+                params.push(<td>{data[year].swims[i][param]}</td>)
+            }
+            swimmer_data.push(<tr>{params}</tr>)
+        }
     }
-    console.log(graph_data)
-    var table = 
+    var points_table = (
         <table> 
             <thead>
                 <tr>{header_row}</tr>
@@ -66,12 +80,32 @@ const ClubReport = () => {
                 <tr>{data_row}</tr>
             </tbody>
         </table>
-    
+    )
+       
+    var swimmer_table = (
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Event</th>
+                <th>Date of swim</th>
+                <th>Time</th>
+                <th>Ranking</th>
+                <th>{points}</th>
+            </thead>
+            <tbody>
+                {swimmer_data}
+            </tbody>
+        </table>
+    )
 
 
     return (
         <div className='content'>
             <h2>Club Report</h2>
+            {/* <StatusMarker/> */}
+            <br/>
             <SearchBar
                 value={clubName}
                 changer={setClubName} />
@@ -91,6 +125,11 @@ const ClubReport = () => {
                 changer={setStroke} 
                 options={STROKES} 
                 value={stroke} />
+            <SmartSelect
+                label="Points"
+                changer={setPoints} 
+                options={POINTS} 
+                value={points} />
             <br/>
             <SmartSlider
                 label='Places'
@@ -123,22 +162,29 @@ const ClubReport = () => {
             <br/>
             <br/>
             <br/>
-            {loading? <h4>Loading...</h4> : table}
-            <br/>
-            {data.length === 0 ? <></> : 
-                <LineChart
-                    width={800}
-                    height={500}
-                    data={graph_data} 
-                    style={{margin: 'auto'}}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="points" stroke="#02bad6"/>
-                </LineChart>
-            }
-            
+            {loading? <h4>Loading...</h4> : 
+                <>
+                    {points_table}
+                    <br/>
+                    {data.length === 0 ? <></> : 
+                        <>
+                            <LineChart
+                                width={800}
+                                height={500}
+                                data={graph_data} 
+                                style={{margin: 'auto'}}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="year" />
+                                <YAxis />
+                                <Tooltip />
+                                <Line type="monotone" dataKey="points" stroke="#02bad6"/>
+                            </LineChart>
+                            <br/>
+                            {swimmer_table}
+                        </>
+                    }
+                    
+                </>}
         </div>
     );
 };

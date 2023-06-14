@@ -148,3 +148,27 @@ canvas {
   max-width:50rem;
   display: inline;
 }
+
+.statusSuccess {
+  font-size: 1rem;
+  border: solid 1.5px black;
+  background-color: #18db4c;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem 0.5rem;
+  border-radius: 1rem;
+  margin: auto;
+  width: fit-content;
+}
+
+.statusFailed {
+  font-size: 1rem;
+  border: solid 1.5px black;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem 0.5rem;
+  border-radius: 1rem;
+  margin: auto;
+  width: fit-content;
+}

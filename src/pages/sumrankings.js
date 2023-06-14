@@ -24,9 +24,14 @@ const SumRankings = () => {
         {value: 'BR', label: 'Breaststroke'},
         {value: 'IM', label: 'IM'}
     ];
+    const POINTS = [
+        {value: 'FINA', label: 'FINA'},
+        {value: 'CAGP', label: 'CAGP'}
+    ];
     const [gender, setGender] = useState('M');
     const [course, setCourse] = useState('LCM');
     const [stroke, setStroke] = useState('FR');
+    const [points, setPoints] = useState('FINA');
     const [place, setPlace] = useState(50);
     const [season, setSeason] = useState(2023);
     const [ages, setAges] = useState([10, 18]);
@@ -37,7 +42,7 @@ const SumRankings = () => {
     const STEM = 'https://www.data-pool.ca/api/sumrankings?';
     const updateResults = async () => {
         setLoading(true);
-        let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}`;
+        let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
         const res = await fetch(`${url}`);
         const data = await res.json();
         setData(data);
@@ -88,6 +93,11 @@ const SumRankings = () => {
                 changer={setStroke} 
                 options={STROKES} 
                 value={stroke} />
+            <SmartSelect
+                label="Points"
+                changer={setPoints} 
+                options={POINTS} 
+                value={points} />
             <br/>
             <SmartSlider
                 label='Places'
