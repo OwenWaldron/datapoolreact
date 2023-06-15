@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import SmartSelect from "../components/SmartSelect";
 import SmartSlider from "../components/smartslider";
+import StatusMarker from "../components/statusmarker";
 
 
 
@@ -37,6 +38,7 @@ const SumRankings = () => {
     const [ages, setAges] = useState([10, 18]);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [upToDate, setUpToDate] = useState(true);
 
 
     const STEM = 'https://www.data-pool.ca/api/sumrankings?';
@@ -78,6 +80,9 @@ const SumRankings = () => {
     return (
         <div className='content'>
             <h2>SumRanking</h2>
+            <StatusMarker
+                changer={setUpToDate}/>
+            <br/>
             <SmartSelect
                 label="Gender"
                 changer={setGender} 
@@ -122,7 +127,7 @@ const SumRankings = () => {
                 value={season}
                 valueLabelDisplay="auto"
                 step={1}
-                range={[2008, 2023]}
+                range={[2008, upToDate? 2023 : 2022]}
                 marks
                 changer={setSeason} />
             <br/>

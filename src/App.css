@@ -151,8 +151,20 @@ canvas {
 
 .statusSuccess {
   font-size: 1rem;
-  border: solid 1.5px black;
+  /* border: solid 1.5px black; */
   background-color: #18db4c;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem 0.5rem;
+  border-radius: 1rem;
+  margin: auto;
+  width: fit-content;
+}
+
+.statusLoading {
+  font-size: 1rem;
+  /* border: solid 1.5px gray; */
+  background-color: orange;
   color: white;
   font-weight: bold;
   padding: 0.5rem 1rem 0.5rem;
@@ -163,7 +175,7 @@ canvas {
 
 .statusFailed {
   font-size: 1rem;
-  border: solid 1.5px black;
+  /* border: solid 1.5px gray; */
   background-color: red;
   color: white;
   font-weight: bold;
@@ -171,4 +183,9 @@ canvas {
   border-radius: 1rem;
   margin: auto;
   width: fit-content;
+}
+
+
+.refreshButton {
+  border-radius: 1rem;
 }

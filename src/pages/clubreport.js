@@ -4,7 +4,8 @@ import SmartSelect from "../components/SmartSelect";
 import SearchBar from '../components/searchbar'
 import SmartSlider from "../components/smartslider";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
- 
+import StatusMarker from '../components/statusmarker';
+
 
 
 const ClubReport = () => {
@@ -41,6 +42,7 @@ const ClubReport = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [clubName, setClubName] = useState('');
+    const [upToDate, setUpToDate] = useState(true);
 
 
     const updateResults = async () => {
@@ -71,6 +73,7 @@ const ClubReport = () => {
             swimmer_data.push(<tr>{params}</tr>)
         }
     }
+
     var points_table = (
         <table> 
             <thead>
@@ -104,7 +107,8 @@ const ClubReport = () => {
     return (
         <div className='content'>
             <h2>Club Report</h2>
-            {/* <StatusMarker/> */}
+            <StatusMarker
+                changer={setUpToDate}/>
             <br/>
             <SearchBar
                 value={clubName}
@@ -154,7 +158,7 @@ const ClubReport = () => {
                 value={seasons}
                 valueLabelDisplay="auto"
                 step={1}
-                range={[2008, 2023]}
+                range={[2008, upToDate? 2023 : 2022]}
                 marks
                 changer={setSeasons} />
             <br/>
