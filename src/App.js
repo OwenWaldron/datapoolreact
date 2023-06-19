@@ -11,11 +11,14 @@ function App() {
   return (
     <Router>
       <Navbar/>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/sumrankings' element={<SumRankings />} />
-        <Route path='/clubreport' element={<ClubReport />} />
-      </Routes>
+      <article>
+        <div className="spacer"></div>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/sumrankings' element={<SumRankings />} />
+          <Route path='/clubreport' element={<ClubReport />} />
+        </Routes>
+      </article>
       <PageFooter/>
     </Router>
   );

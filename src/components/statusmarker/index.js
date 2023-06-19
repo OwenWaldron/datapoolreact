@@ -41,12 +41,12 @@ const StatusMarker = (props) => {
     }, [props])
 
     return (
-        <>
+        <div className='statusMarker'>
             <h5>Data Status:</h5>
             <div className={version.status.includes('ERROR')? 'statusFailed' : version.complete? 'statusSuccess' : 'statusLoading'}>
                 {version.status.includes('ERROR')? 'Error refreshing, contact admin' : version.complete? <>{`Last updated: ${version.date}`}<br/><button className='refreshButton' onClick={Alert}>Refresh?</button></> : <>Updating recent year...</>}
             </div>
-        </>
+        </div>
     );
 }
 

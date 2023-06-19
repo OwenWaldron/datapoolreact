@@ -5,9 +5,13 @@ header {
 
 footer {
   background-color: #a4f4f8;
-  height: 120px;
+  margin-top: 1rem;
   padding: 1rem;
   text-align: left;
+}
+
+article {
+  vertical-align: top;
 }
 
 nav {
@@ -21,21 +25,43 @@ nav {
   padding: 0 10rem 0;
   text-align: center;
   padding-bottom: 3rem;
-  min-height: 29.3rem;
 }
 
 table {
+  border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
   empty-cells: hide;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-table, th, td {
-  border: 0.2rem solid black;
+th, td {
+  padding: 0.7rem;
 }
 
-td, th {
-  padding: 0.5rem;
+th {
+  background-color: #02bad6;
+  color: #d8faff;
+}
+
+thead :first-child {
+  border-top-left-radius: 1rem;
+}
+
+thead :last-child {
+  border-top-right-radius: 1rem;
+}
+
+tbody :last-child :first-child {
+  border-bottom-left-radius: 1rem;
+}
+
+tbody :last-child :last-child {
+  border-bottom-right-radius: 1rem;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: white;
 }
 
 h1 {
@@ -66,11 +92,6 @@ h4 {
 
 a.navi {
   text-decoration: none;
-}
-
-th {
-  background-color: #02bad6;
-  color: #d8faff;
 }
 
 .icon {
@@ -188,4 +209,24 @@ canvas {
 
 .refreshButton {
   border-radius: 1rem;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+}
+
+.refreshButton:hover {
+  background-color: darkgreen;
+  font-weight: bold;
+}
+
+.betterButton {
+  border-radius: 1rem;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;;
+}
+
+.statusMarker {
+  position: absolute;
+  right: 5rem;
 }

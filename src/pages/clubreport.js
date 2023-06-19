@@ -5,6 +5,7 @@ import SearchBar from '../components/searchbar'
 import SmartSlider from "../components/smartslider";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import StatusMarker from '../components/statusmarker';
+import CollapseTable from "../components/collapsetable";
 
 
 
@@ -56,15 +57,16 @@ const ClubReport = () => {
         setLoading(false);
     }, [data]);
 
-
+    const HEADERS = ['Name', 'Birthday', 'Gender', 'Event', 'Date of swim', 'Time', 'Ranking', points];
     let header_row = []
     let data_row = []
     let graph_data = []
-    let swimmer_data = []
+    let swimmer_tables = []
     for (var year in data) {
         header_row.push(<th>{year}</th>)
         data_row.push(<td>{data[year].points}</td>)
         graph_data.push({year: year, points: data[year].points})
+        var swimmer_data = []
         for (var i in data[year].swims) {
             var params = []
             for (var param in data[year].swims[i]) {
@@ -72,7 +74,17 @@ const ClubReport = () => {
             }
             swimmer_data.push(<tr>{params}</tr>)
         }
+        swimmer_tables.push(
+            <>
+                <h2>{year}</h2>
+                <CollapseTable
+                    headers={HEADERS}
+                    data={swimmer_data} />
+                <br/><br/>
+            </>
+        )
     }
+    swimmer_tables.reverse()
 
     var points_table = (
         <table> 
@@ -84,32 +96,13 @@ const ClubReport = () => {
             </tbody>
         </table>
     )
-       
-    var swimmer_table = (
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Birthday</th>
-                <th>Gender</th>
-                <th>Event</th>
-                <th>Date of swim</th>
-                <th>Time</th>
-                <th>Ranking</th>
-                <th>{points}</th>
-            </thead>
-            <tbody>
-                {swimmer_data}
-            </tbody>
-        </table>
-    )
 
 
     return (
         <div className='content'>
-            <h2>Club Report</h2>
             <StatusMarker
                 changer={setUpToDate}/>
-            <br/>
+            <h2>Club Report</h2>
             <SearchBar
                 value={clubName}
                 changer={setClubName} />
@@ -184,7 +177,7 @@ const ClubReport = () => {
                                 <Line type="monotone" dataKey="points" stroke="#02bad6"/>
                             </LineChart>
                             <br/>
-                            {swimmer_table}
+                            {swimmer_tables}
                         </>
                     }
                     

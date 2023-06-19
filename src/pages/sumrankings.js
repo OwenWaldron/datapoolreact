@@ -67,22 +67,23 @@ const SumRankings = () => {
     if (tableData.length > 0) {
         table = (
             <table id="tableau">
-                <tr>
+                <thead>
                     <th>#</th>
                     <th>Club</th>
                     <th>Total Fina Points</th>
-                </tr>
-                {tableData}
+                </thead>
+                <tbody>
+                    {tableData}
+                </tbody>
             </table>
         )
     }
 
     return (
         <div className='content'>
-            <h2>SumRanking</h2>
             <StatusMarker
                 changer={setUpToDate}/>
-            <br/>
+            <h2>SumRanking</h2>
             <SmartSelect
                 label="Gender"
                 changer={setGender} 
