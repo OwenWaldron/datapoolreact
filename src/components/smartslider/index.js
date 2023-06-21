@@ -16,6 +16,7 @@ const SmartSlider = (props) => {
                     marks={props.marks}
                     onChange={(event) => props.changer(event.target.value)}
                     disableSwap={props.disableSwap}
+                    disabled={props.disabled}
                 />
             </div>
         </FormControl>

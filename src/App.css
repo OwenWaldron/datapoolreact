@@ -230,3 +230,21 @@ canvas {
   position: absolute;
   right: 5rem;
 }
+
+.rowForm {
+  background-color: #c9fafe;
+  padding: 1rem;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  width: 30rem;
+}
+
+
+.bodyDiv {
+  background-color: #e3faff;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  margin: 0rem;
+}

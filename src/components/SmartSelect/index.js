@@ -5,7 +5,10 @@ const SmartSelect = (props) => {
     return (
         <FormControl>
             <InputLabel>{props.label}</InputLabel>
-            <Select value={props.value} onChange={(e) => props.changer(e.target.value)} label={props.label}>
+            <Select 
+                value={props.value} 
+                onChange={(e) => props.changer(e.target.value)} 
+                label={props.label} >
                 {props.options.map((row) => (
                     <MenuItem value={row.value} key={row.value}>{row.label}</MenuItem>
                 ))}

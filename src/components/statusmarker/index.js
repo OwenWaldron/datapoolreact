@@ -37,7 +37,6 @@ const StatusMarker = (props) => {
             setStatus(version)
             props.changer(version.complete)
         })
-        console.log('hello')
     }, [props])
 
     return (
