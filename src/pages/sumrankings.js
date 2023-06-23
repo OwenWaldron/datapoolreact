@@ -41,7 +41,7 @@ const SumRankings = () => {
     const [upToDate, setUpToDate] = useState(true);
 
 
-    const STEM = 'https://www.data-pool.ca/api/sumrankings?';
+    const STEM = 'http://3.99.34.176/api/sumrankings?';
     const updateResults = async () => {
         setLoading(true);
         let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;

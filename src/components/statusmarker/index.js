@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Swal from "sweetalert2";
 
 const getVersion = async () => {
-    let url = 'https://www.data-pool.ca/api/version';
+    let url = 'http://3.99.34.176/api/version';
     const res = await fetch(url);
     const data = await res.json();
     return data
@@ -25,7 +25,7 @@ const StatusMarker = (props) => {
         })
       };
       const triggerRefresh = () => {
-        fetch('https://www.data-pool.ca/api/refresh')
+        fetch('http://3.99.34.176//api/refresh')
         getVersion().then((version) => {
             setStatus(version)
             props.changer(version.complete)

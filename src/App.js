@@ -7,10 +7,12 @@ import SumRankings from './pages/sumrankings';
 import ClubReport from './pages/clubreport';
 import PageFooter from './components/pagefooter';
 import ClubCompare from './pages/clubcompare';
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   return (
     <Router>
+      <Analytics />
       <Navbar/>
       <article>
         <div className="spacer"></div>
