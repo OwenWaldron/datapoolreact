@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 
 const getClubsFromAPI = async (search) => {
-    let url = `https://www.data-pool.ca//api/clubs?search=${search}`
+    let url = `https://apis.data-pool.ca//api/clubs?search=${search}`
     const res = await fetch(url);
     const data = await res.json();
     return data;

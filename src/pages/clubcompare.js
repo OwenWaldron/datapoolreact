@@ -53,7 +53,7 @@ const ClubCompare = () => {
     const updateResults = async () => {
         setLoading(true);
         var row_name = `${clubName} ${ages[0]}-${ages[1]} ${gender} ${stroke}`;
-        let url = `http://3.99.34.176/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
+        let url = `https://apis.data-pool.ca/api/clubreport/general?age_min=${ages[0]}&age_max=${ages[1]}&first_season=${seasons[0]}&last_season=${seasons[1]}&club_name=${clubName}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
         const res = await fetch(url);
         const data = await res.json();
         var row = {name: row_name, data: data};
@@ -71,15 +71,15 @@ const ClubCompare = () => {
 
     // Generate the tables
     var header_row = ['']
-    for (var i = seasons[0]; i <= seasons[1]; i++) {
+    for (let i = seasons[0]; i <= seasons[1]; i++) {
         header_row.push(i);
     }
     var data_rows = []
     var graph_data = []
-    for (var index in rows) {
+    for (let index in rows) {
         var row = rows[index]
         var data_row = [<th>{row.name}</th>]
-        for (var year in row.data) {
+        for (let year in row.data) {
             data_row.push(<td>{row.data[year].points}</td>)
             let found = false;
             console.log(graph_data)
