@@ -1,10 +1,10 @@
 header {
   padding: 1rem 0rem 0rem;
-  background-color: #02bad6;
+  background: linear-gradient(180deg, #0ea0ff, 5rem, #c9fafe);
 }
 
 footer {
-  background-color: #a4f4f8;
+  background: linear-gradient(135deg, #c9fafe, 50rem, #0ea0ff);
   margin-top: 6rem;
   padding: 1rem;
   text-align: left;
@@ -103,8 +103,10 @@ a.navi {
 }
 
 .icon {
-  height: 3rem;
-  width: 3rem;
+  height: 5rem;
+  width: 5rem;
+  margin-bottom: .5rem;
+  margin-right: .75rem;
 }
 
 .spacer {

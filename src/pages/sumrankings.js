@@ -81,58 +81,59 @@ const SumRankings = () => {
 
     return (
         <div className='content'>
-            <StatusMarker
-                changer={setUpToDate}/>
+            <StatusMarker changer={setUpToDate}/>
             <h2>SumRanking</h2>
-            <SmartSelect
-                label="Gender"
-                changer={setGender} 
-                options={GENDERS} 
-                value={gender} />
-            <SmartSelect
-                label="Course"
-                changer={setCourse} 
-                options={COURSES} 
-                value={course} />
-            <SmartSelect
-                label="Stroke"
-                changer={setStroke} 
-                options={STROKES} 
-                value={stroke} />
-            <SmartSelect
-                label="Points"
-                changer={setPoints} 
-                options={POINTS} 
-                value={points} />
-            <br/>
-            <SmartSlider
-                label='Places'
-                value={place}
-                valueLabelDisplay="auto"
-                step={1}
-                range={[10,100]}
-                changer={setPlace} />
-            <br/>
-            <SmartSlider
-                label='Ages'
-                value={ages}
-                valueLabelDisplay="auto"
-                step={1}
-                range={[0,30]}
-                marks
-                changer={setAges}
-                disableSwap />
-            <br/>
-            <SmartSlider
-                label='Season'
-                value={season}
-                valueLabelDisplay="auto"
-                step={1}
-                range={[2008, upToDate? 2023 : 2022]}
-                marks
-                changer={setSeason} />
-            <br/>
-            <Button variant="contained" onClick={updateResults}>Get Results</Button>
+            <div>
+                <SmartSelect
+                    label="Gender"
+                    changer={setGender} 
+                    options={GENDERS} 
+                    value={gender} />
+                <SmartSelect
+                    label="Course"
+                    changer={setCourse} 
+                    options={COURSES} 
+                    value={course} />
+                <SmartSelect
+                    label="Stroke"
+                    changer={setStroke} 
+                    options={STROKES} 
+                    value={stroke} />
+                <SmartSelect
+                    label="Points"
+                    changer={setPoints} 
+                    options={POINTS} 
+                    value={points} />
+                <br/>
+                <SmartSlider
+                    label='Places'
+                    value={place}
+                    valueLabelDisplay="auto"
+                    step={1}
+                    range={[10,100]}
+                    changer={setPlace} />
+                <br/>
+                <SmartSlider
+                    label='Ages'
+                    value={ages}
+                    valueLabelDisplay="auto"
+                    step={1}
+                    range={[0,30]}
+                    marks
+                    changer={setAges}
+                    disableSwap />
+                <br/>
+                <SmartSlider
+                    label='Season'
+                    value={season}
+                    valueLabelDisplay="auto"
+                    step={1}
+                    range={[2008, upToDate? 2023 : 2022]}
+                    marks
+                    changer={setSeason} />
+                <br/>
+                <Button variant="contained" onClick={updateResults}>Get Results</Button>
+            </div>
             <br/>
             <br/>
             <br/>

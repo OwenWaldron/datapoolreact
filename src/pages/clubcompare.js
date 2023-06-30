@@ -82,14 +82,10 @@ const ClubCompare = () => {
         for (let year in row.data) {
             data_row.push(<td>{row.data[year].points}</td>)
             let found = false;
-            console.log(graph_data)
             for (var i in graph_data) {
-                console.log('graph', graph_data[i].year)
-                console.log('number', Number(year))
                 if (graph_data[i].year === Number(year)) {
                     found = true;
                     graph_data[i][row.name] = row.data[year].points
-                    console.log('hi')
                 }
             }
             if (!found) {

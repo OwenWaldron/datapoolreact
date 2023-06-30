@@ -1,13 +1,16 @@
 import React from "react";
-import swimmer from './swimmer.png'; 
+import cap from './capshadow.png'; 
 
 
 const Navbar = () => {
+    let applefonts = ['-apple-system', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'];
+
      return (
         <header>
             <h1 style={{padding: '0 10rem 0'}}>
-                <img src={swimmer} className="icon" alt="logo"/>
-                Data<b style={{color: "#a4f4f8"}}>Pool</b>
+                <img src={cap} className="icon" alt="logo"/>
+                <b style={{ fontFamily: ["Courier New", "monospace"], fontWeight: "900"}}>Data</b>
+                <b style={{color: "#a4f4f8", fontFamily: applefonts}}>Pool</b>
             </h1>
             <nav className="nav" style={{padding: '0 10rem 0'}}>
                 <a className="nav-link" href="/"><b>Home</b></a>
