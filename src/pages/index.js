@@ -1,5 +1,5 @@
 import React from 'react';
-import cap from './images/cap.png';
+import cap from './assets/cap.png';
  
 const Home = () => {
     return (

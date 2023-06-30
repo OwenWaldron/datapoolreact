@@ -5,6 +5,7 @@ import SearchBar from '../components/searchbar'
 import SmartSlider from "../components/smartslider";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import StatusMarker from '../components/statusmarker';
+import loadingGif from './assets/loading.gif';
 
 
 
@@ -174,7 +175,7 @@ const ClubCompare = () => {
             <br/>
             <br/>
             <br/>
-            {loading? <h4>Loading...</h4> : 
+            {loading? <img src={loadingGif} className='loading' alt="loading" /> : 
                 <>
                     {rows.length === 0 ? <></> : points_table}
                     <br/>

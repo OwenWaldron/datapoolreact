@@ -6,6 +6,7 @@ import SmartSlider from "../components/smartslider";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import StatusMarker from '../components/statusmarker';
 import CollapseTable from "../components/collapsetable";
+import loadingGif from './assets/loading.gif';
 
 
 
@@ -159,7 +160,7 @@ const ClubReport = () => {
             <br/>
             <br/>
             <br/>
-            {loading? <h4>Loading...</h4> : 
+            {loading? <img src={loadingGif} className='loading' alt="loading" /> : 
                 <>
                     {points_table}
                     <br/>

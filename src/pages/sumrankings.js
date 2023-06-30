@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import SmartSelect from "../components/SmartSelect";
 import SmartSlider from "../components/smartslider";
 import StatusMarker from "../components/statusmarker";
+import loadingGif from './assets/loading.gif';
 
 
 
@@ -137,7 +138,7 @@ const SumRankings = () => {
             <br/>
             <br/>
             <br/>
-            {loading? <h3>Loading...</h3> : table}
+            {loading? <img src={loadingGif} className='loading' alt="loading" /> : table}
         </div>
     );
 };

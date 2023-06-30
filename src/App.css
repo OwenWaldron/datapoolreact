@@ -248,3 +248,11 @@ body {
   margin: 0rem;
   max-width: 100%;
 }
+
+.loading {
+  height: 5rem;
+  aspect-ratio: initial;
+  color: #0ea0ff;
+  filter: brightness(0.5);
+}
+
