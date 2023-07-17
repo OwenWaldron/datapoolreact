@@ -17,6 +17,7 @@ const Navbar = () => {
                 <a className="nav-link" href="/sumrankings">Sum Rankings</a>
                 <a className="nav-link" href="/clubreport">Club Reports</a>
                 <a className="nav-link" href="/clubcompare">Club Compare</a>
+                <a className="nav-link" href="/devmod">Development</a>
             </nav>  
         </header>
      );

@@ -7,6 +7,7 @@ import SumRankings from './pages/sumrankings';
 import ClubReport from './pages/clubreport';
 import PageFooter from './components/pagefooter';
 import ClubCompare from './pages/clubcompare';
+import DevMod from './pages/devmod';
 import { Analytics } from '@vercel/analytics/react'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/sumrankings' element={<SumRankings />} />
           <Route path='/clubreport' element={<ClubReport />} />
           <Route path='/clubcompare' element={<ClubCompare />} />
+          <Route path='/devmod' element={<DevMod />} />
         </Routes>
       </article>
       <PageFooter/>

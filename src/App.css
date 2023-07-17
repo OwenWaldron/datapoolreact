@@ -256,3 +256,18 @@ body {
   filter: brightness(0.5);
 }
 
+canvas {
+  margin: auto;
+  width: 50rem;
+}
+
+
+.plotBundle {
+  border-radius: 3rem;
+  margin: auto;
+  background-color: #c9fafe;
+  width: fit-content;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
