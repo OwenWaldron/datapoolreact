@@ -8,7 +8,7 @@ import ClubReport from './pages/clubreport';
 import PageFooter from './components/pagefooter';
 import ClubCompare from './pages/clubcompare';
 import DevMod from './pages/devmod';
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
