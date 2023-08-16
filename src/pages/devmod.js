@@ -10,11 +10,12 @@ import {
     PointElement,
     LineElement,
     Tooltip,
+    Title
   } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
 
 
-ChartJS.register(LinearScale, PointElement, LineElement, Tooltip);
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Title);
 
 const COLORS = {
     2022: 'rgb(110, 230, 240)',
@@ -151,26 +152,54 @@ const DevMod = () => {
     let plots = [];
     for (let i in datasets) {
         plots.push(
-            <div key={i} className="plotBundle">
-                <h3>{datasets[i].name}</h3>
+            <div key={i} className="plotBundle" id={`d${i}`}>
                 <Scatter 
+                    className="canvas"
                     options={{
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: datasets[i].name,
+                                font: {
+                                    size: 24,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
                         scales: {
                             x: {
                                 type: 'linear',
                                 position: 'bottom',
                                 min: 0,
-                                max: range[0]
+                                max: range[0],
+                                title: {
+                                    display: true,
+                                    text: "Average of FINA Points Accross All Swims"
+                                }
                             },
                             y: {
                                 type: 'linear',
                                 position: 'left',
                                 min: 0,
-                                max: range[1]
+                                max: range[1],
+                                title: {
+                                    display: true,
+                                    text: "Standard Deviation of FINA Points Accross All Swims"
+                                }
                             }
                         }
                     }}
                     data={{datasets: datasets[i].rows}} />
+                    <Button
+                        onClick={() => {
+                            var link = document.createElement('a');
+                            link.download = 'image.png';
+                            var canvas = document.getElementById(`d${i}`).getElementsByClassName('canvas')[0];
+                            link.href = canvas.toDataURL("image/png");
+                            link.click()
+                        }}>
+                        Download as PNG
+                    </Button>
             </div>
         )
     }

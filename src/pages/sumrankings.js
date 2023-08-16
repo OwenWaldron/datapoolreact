@@ -48,6 +48,7 @@ const SumRankings = () => {
         let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
         const res = await fetch(`${url}`);
         const data = await res.json();
+        data = ['Club', points] + data
         setData(data);
     }
     useEffect(() => {
@@ -83,7 +84,7 @@ const SumRankings = () => {
     return (
         <div className='content'>
             <StatusMarker changer={setUpToDate}/>
-            <h2>SumRanking</h2>
+            <h2>Sum Rankings</h2>
             <div>
                 <SmartSelect
                     label="Gender"
