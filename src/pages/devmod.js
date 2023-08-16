@@ -10,12 +10,13 @@ import {
     PointElement,
     LineElement,
     Tooltip,
-    Title
+    Title,
+    Legend
   } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
 
 
-ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Title);
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Title, Legend);
 
 const COLORS = {
     2022: 'rgb(110, 230, 240)',
@@ -164,6 +165,13 @@ const DevMod = () => {
                                     size: 24,
                                     weight: 'bold'
                                 }
+                            },
+                            legend: {
+                                labels: {
+                                    filter: (item, chart) => {
+                                        return !item.text.includes("Average")
+                                    }
+                                }
                             }
                         },
                         scales: {
@@ -187,7 +195,8 @@ const DevMod = () => {
                                     text: "Standard Deviation of FINA Points Accross All Swims"
                                 }
                             }
-                        }
+                        },
+                        backgroundColor: '#c9fafe'
                     }}
                     data={{datasets: datasets[i].rows}} />
                     <Button

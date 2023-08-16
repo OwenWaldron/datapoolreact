@@ -47,8 +47,7 @@ const SumRankings = () => {
         setLoading(true);
         let url = STEM + `age=${ages[0]}&age_max=${ages[1]}&season=${season}&gender=${gender}&course=${course}&stroke=${stroke}&max_place=${place}&points_style=${points}`;
         const res = await fetch(`${url}`);
-        const data = await res.json();
-        data = ['Club', points] + data
+        let data = await res.json();
         setData(data);
     }
     useEffect(() => {
