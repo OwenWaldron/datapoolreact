@@ -124,7 +124,7 @@ const ClubCompare = () => {
                 value={seasons}
                 valueLabelDisplay="auto"
                 step={1}
-                range={[2008, upToDate? 2023 : 2022]}
+                range={[2008, upToDate? 2024 : 2023]}
                 marks
                 disabled={rows.length > 0}
                 changer={setSeasons} />

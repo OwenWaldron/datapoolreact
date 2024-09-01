@@ -246,7 +246,7 @@ const DevMod = () => {
                     value={yob}
                     valueLabelDisplay="auto"
                     step={1}
-                    range={[2000, 2015]}
+                    range={[2000, 2017]}
                     marks
                     changer={setYOB}
                     disableSwap />

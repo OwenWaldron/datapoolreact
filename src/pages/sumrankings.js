@@ -129,7 +129,7 @@ const SumRankings = () => {
                     value={season}
                     valueLabelDisplay="auto"
                     step={1}
-                    range={[2008, upToDate? 2023 : 2022]}
+                    range={[2008, upToDate? 2024 : 2023]}
                     marks
                     changer={setSeason} />
                 <br/>
