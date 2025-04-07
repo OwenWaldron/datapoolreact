@@ -49,6 +49,15 @@ const ClubCompare = () => {
     const [loading, setLoading] = useState(false);
     const [clubName, setClubName] = useState('');
     const [upToDate, setUpToDate] = useState(true);
+    const [currentYear, setCurrentYear] = useState(2024);
+
+    useEffect(() => {
+        const yer = new Date().getFullYear();
+        seasons[1] = yer;
+        setSeasons([...seasons]);
+        setCurrentYear(yer);
+    }, [])
+
 
 
     const updateResults = async () => {
@@ -124,7 +133,7 @@ const ClubCompare = () => {
                 value={seasons}
                 valueLabelDisplay="auto"
                 step={1}
-                range={[2008, upToDate? 2024 : 2023]}
+                range={[2008, upToDate? currentYear : currentYear - 1]}
                 marks
                 disabled={rows.length > 0}
                 changer={setSeasons} />

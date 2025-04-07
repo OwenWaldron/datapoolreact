@@ -40,6 +40,13 @@ const SumRankings = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [upToDate, setUpToDate] = useState(true);
+    const [currentYear, setCurrentYear] = useState(2024);
+
+    useEffect(() => {
+        const yer = new Date().getFullYear();
+        setSeason(yer);
+        setCurrentYear(yer);
+    }, [])
 
 
     const STEM = 'https://apis.data-pool.ca/api/sumrankings?';
@@ -129,7 +136,7 @@ const SumRankings = () => {
                     value={season}
                     valueLabelDisplay="auto"
                     step={1}
-                    range={[2008, upToDate? 2024 : 2023]}
+                    range={[2008, upToDate? currentYear : currentYear - 1]}
                     marks
                     changer={setSeason} />
                 <br/>
